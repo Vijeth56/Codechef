@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int arr[n];
+        for(int i=0; i<n; i++) //TAKING INPUT
+            cin>>arr[i];
+        int oddind=1;
+        int evenind=0;
+        while(true){
+            while(evenind<n && arr[evenind]%2 == 0)
+                evenind+=2;
+            while(oddind<n && arr[oddind]%2 == 1)
+                oddind+=2;
+            if(evenind<n && oddind<n)
+                swap(arr[evenind], arr[oddind]);
+            else
+                break;
+        }
+        int j=1;
+        for(int i=0; i<n; i++){
+            arr[i] = (arr[i]+j)%2;
+            j++;
+        }
+        int sum=0;
+        for(int i=0; i<n; i++)
+            sum+=arr[i];
+        cout<<sum<<endl;
+    }
+	// your code goes here
+	return 0;
+}
